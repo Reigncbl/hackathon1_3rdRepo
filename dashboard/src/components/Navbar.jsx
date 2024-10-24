@@ -28,7 +28,7 @@ const Navbar = () => {
             <a href="/" className='sidebar-text'>Analytics</a>
           </li>
           <li className='sidebar-button'>
-            <span class='fa-solid fa-clock sidebar-icon'></span>
+            <span class="fa-solid fa-clock sidebar-icon"></span>
             <a href="/" className='sidebar-text'>Loans</a>
           </li>
         </ul>

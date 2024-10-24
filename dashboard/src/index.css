@@ -5,17 +5,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
+@layer components {
   .sidebar-button {
     @apply flex items-center justify-start p-2 gap-2 rounded-r-lg hover:bg-black hover:bg-opacity-10;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transitions */
   }
+
   .sidebar-text {
     @apply text-gray-800 text-lg font-semibold;
   }
+
   .sidebar-icon {
-    @apply text-gray-500 hover:text-white;
+    @apply text-gray-500;
   }
+
   .main-card {
     @apply w-1/3 h-40 rounded-xl bg-white bg-opacity-50 shadow-md;
+  }
+
+  .active {
+    @apply bg-black bg-opacity-10 border-l-4 border-white pl-4;
+    transition: all 0.3s ease;
   }
 }
