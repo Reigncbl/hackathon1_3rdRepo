@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { SidebarData } from '../Data/sidebar';
-import { SidebarFooter } from '../Data/sidebar-footer';
+import { SidebarData, SidebarFooter } from '../Data/Data';
 
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
