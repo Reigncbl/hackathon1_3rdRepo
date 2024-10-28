@@ -3,7 +3,7 @@ import Cards from '../Cards/DataCard';
 
 const Main = () => {
   return (
-    <div className='flex flex-row gap-6 h-full w-full text-gray-900 rounded-xl overflow-y-scroll'>
+    <div className='flex flex-row gap-6 h-full w-full text-gray-900 rounded-xl'>
       <div className='w-2/3'>
         <h1 className='text-4xl font-semibold pb-4'>Dashboard</h1>
         <p className='py-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib</p>
