@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
-
+import TableauReport from 'tableau-react';
 // parent Card
 
 const Card = (props) => {
@@ -34,7 +34,6 @@ function CompactCard({ param, setExpanded }) {
 
 // Expanded Card
 function ExpandedCard({ param, setExpanded }) {
-
   return (
     <motion.div
       className="fixed inset-0 flex items-center justify-center z-10"
@@ -44,8 +43,22 @@ function ExpandedCard({ param, setExpanded }) {
         <div onClick={setExpanded} className="flex justify-end cursor-pointer">
           exit
         </div>
-      </div>
+      
+             <TableauReport 
+          url={param.url}
+          options={{
+            hideTabs: false,
+            hideToolbar: false,
+            height:500,
+            width:500
+            
+          }}
+         
+        /></div>
+   
+   
     </motion.div>
   );
-};
+}
+// tablue settings
 export default Card;
