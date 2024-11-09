@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { SidebarData, SidebarFooter } from '../Data/Data';
 
-const Sidebar = () => {
+const Sidebar = ({ scrollToSection, mainRef, aboutRef }) => {
   const [selected, setSelected] = useState(0);
+
+  const handleScroll = (index) => {
+    setSelected(index);
+    if (index === 0) {
+      scrollToSection(mainRef);
+    } else if (index === 1) {
+      scrollToSection(aboutRef);
+    }
+  };
 
   return (
     <div className='h-full w-64 text-white'>
@@ -16,7 +25,7 @@ const Sidebar = () => {
             <li 
               className={selected === index ? 'sidebar-button active' : 'sidebar-button'}
               key={index}
-              onClick={() => setSelected(index)}
+              onClick={() => handleScroll(index)}
             >
               <span className='sidebar-icon'>{item.icon}</span>
               <span className='sidebar-text'>{item.title}</span>
