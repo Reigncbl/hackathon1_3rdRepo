@@ -3,6 +3,7 @@ import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 import About from './components/About';
+import Calculator from './components/Calculator';
 
 
 function App() {
@@ -20,10 +21,14 @@ function App() {
         <div className='flex flex-col gap-6 h-full w-full text-gray-900 rounded-xl overflow-y-scroll'> 
           <div ref={mainRef}>
             <Main />
+ 
           </div>
           <div ref={aboutRef}>
             <About />
           </div>
+          <div>
+        <Calculator />
+        </div>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ export const SidebarData = [
         link: '/',
     },
     {
-        title: 'Analytics',
+        title: 'Calculator',
         icon: <UilChart />,
         link: '/',
     },
