@@ -6,6 +6,7 @@ import Title from './components/Title';
 import Small from './components/Small';
 import Micro from './components/Micro';
 import { SidebarData, SidebarFooter } from './Data/Data';
+import Calculator from './components/Calculator';
 
 function App() {
   const [selected, setSelected] = useState(0);
@@ -35,6 +36,7 @@ function App() {
         {selected === 0 && <Main />}
         {selected === 1 && <Micro />}
         {selected === 2 && <Small />}
+        {selected === 4 && <Calculator />
         {selected === 5 && <About />}
       </div>
     </div>
