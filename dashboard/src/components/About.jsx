@@ -4,8 +4,6 @@ const About = () => {
   return (
     <div>
 
-      <h1 className="text-4xl font-semibold pb-4">About</h1>
-
       <br></br>
       <p className="indent-8 text-justify ml-4 mr-10">Our website gives you an insight about the patterns 
         and trends of MSMEs through data visualizations using the data provided by the Bank of the 

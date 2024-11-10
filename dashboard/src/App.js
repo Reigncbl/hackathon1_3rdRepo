@@ -1,33 +1,43 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
-
 import About from './components/About';
-
+import Title from './components/Title';
+import Small from './components/Small';
+import Micro from './components/Micro';
+import { SidebarData, SidebarFooter } from './Data/Data';
 
 function App() {
-  const mainRef = useRef(null);
-  const aboutRef = useRef(null);  
+  const [selected, setSelected] = useState(0);
+  const [isSidebarActive, setSidebarActive] = useState(true);
+  const [isNightMode, setNightMode] = useState(false);
 
-  const scrollToSection = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Combine SidebarData and SidebarFooter
+  const fullSidebarData = [...SidebarData, ...SidebarFooter];
 
   return (
-    <div className='h-screen bg-gradient-to-r from-[#ce6f6f] to-[#29d38c] p-2 font-poppins'>
-      <div className='h-full bg-white bg-opacity-50 shadow-md rounded-3xl flex gap-6 p-6'>
-        <Sidebar scrollToSection={scrollToSection} mainRef={mainRef} aboutRef={aboutRef} />
-        <div className='flex flex-col gap-6 h-full w-full text-gray-900 rounded-xl overflow-y-scroll'> 
-          <div ref={mainRef}>
-            <Main />
-          </div>
-          <div ref={aboutRef}>
-            <About />
-          </div>
-        </div>
+    <div className={`h-screen ${isNightMode ? 'dark' : ''} flex bg-[#050517]`}>
+      <Sidebar 
+        selected={selected} 
+        setSelected={setSelected} 
+        isSidebarActive={isSidebarActive} 
+        setSidebarActive={setSidebarActive}
+        isNightMode={isNightMode} 
+        setNightMode={setNightMode} 
+      />
+      
+      <div className='flex flex-col px-16 py-6 my-4 mr-4 rounded-3xl h-auto w-full overflow-y-scroll bg-white dark:bg-gray-900'>
+        <Title 
+          isNightMode={isNightMode} 
+          setNightMode={setNightMode} 
+          title={fullSidebarData[selected]?.title}  // Safely access title
+        />
+        {selected === 0 && <Main />}
+        {selected === 1 && <Micro />}
+        {selected === 2 && <Small />}
+        {selected === 5 && <About />}
       </div>
     </div>
-    
   );
 }
 
