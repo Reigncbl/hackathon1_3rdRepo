@@ -3,43 +3,40 @@ import {
     UilClipboardAlt,
     UilChart,
     UilPackage,
+    UilInfoCircle,
 } from '@iconscout/react-unicons';
 
 export const SidebarData = [
     {
         title: 'Dashboard',
         icon: <UilEstate />,
-        link: '/',
     },
     {
-        title: 'About',
+        title: 'Micro',
         icon: <UilClipboardAlt />,
-        link: '/',
     },
     {
-        title: 'Calculator',
+        title: 'Small',
         icon: <UilChart />,
-        link: '/',
     },
     {
-        title: 'Loans',
+        title: 'Medium',
         icon: <UilPackage />,
-        link: '/',
     },
+    {
+      title: 'Calculator',
+      icon: <UilPackage />,
+  },
 
 ];
 
 export const SidebarFooter = [
     {
-        title: 'Settings',
-        icon: <UilPackage />,
-        link: '/',
-    },
-    {
-        title: 'Information',
-        icon: <UilPackage />,
-        link: '/',
-    },
+      title: 'About',
+      icon: <UilInfoCircle />,
+
+      
+    }
 ];
 
 export const cardsData = [
