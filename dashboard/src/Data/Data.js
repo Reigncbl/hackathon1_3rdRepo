@@ -24,7 +24,7 @@ export const SidebarData = [
         icon: <UilPackage />,
     },
     {
-      title: 'Calculator',
+      title: 'Loan Calculator',
       icon: <UilPackage />,
   },
 
@@ -54,41 +54,6 @@ export const cardsData = [
         {
           name: "Sales",
           data: [31, 40, 28, 51, 42, 109, 100],
-        },
-      ],
-    },
-    {
-      title: "Revenue",
-      color: {
-        backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 100%)",
-        boxShadow: "0px 10px 20px 0px #FDC0C7",
-      },
-      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
-      barValue: 80,
-      value: "14,270",
-      png: UilChart,
-      series: [
-        {
-          name: "Revenue",
-          data: [10, 100, 50, 70, 80, 30, 40],
-        },
-      ],
-    },
-    {
-      title: "Expenses",
-      color: {
-        backGround:
-          "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
-        boxShadow: "0px 10px 20px 0px #F9D59B",
-      },
-      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
-      barValue: 60,
-      value: "4,270",
-      png: UilClipboardAlt,
-      series: [
-        {
-          name: "Expenses",
-          data: [10, 25, 15, 30, 12, 15, 20],
         },
       ],
     },

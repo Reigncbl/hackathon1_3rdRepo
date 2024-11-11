@@ -23,7 +23,7 @@ function CompactCard({ param, setExpanded }) {
     <motion.div
       layoutId="expandableCard"
       onClick={setExpanded}
-      className="w-auto h-32 z-10 rounded-xl bg-white bg-opacity-50 shadow-md p-2"
+      className=""
     >
       <div>
         <span>{param.title}</span>
