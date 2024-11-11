@@ -5,6 +5,7 @@ import About from './components/About';
 import Title from './components/Title';
 import Small from './components/Small';
 import Micro from './components/Micro';
+import Medium from './components/Medium';
 import { SidebarData, SidebarFooter } from './Data/Data';
 import Calculator from './components/Calculator';
 
@@ -27,7 +28,7 @@ function App() {
         setNightMode={setNightMode} 
       />
       
-      <div className='flex flex-col px-16 py-6 my-4 mr-4 rounded-3xl h-auto w-full overflow-y-scroll bg-white dark:bg-gray-900'>
+      <div className='flex flex-col px-16 pt-6 pb-16 my-4 mr-4 rounded-3xl h-auto w-full overflow-y-scroll bg-white dark:bg-gray-900'>
         <Title 
           isNightMode={isNightMode} 
           setNightMode={setNightMode} 
@@ -36,7 +37,8 @@ function App() {
         {selected === 0 && <Main />}
         {selected === 1 && <Micro />}
         {selected === 2 && <Small />}
-        {selected === 4 && <Calculator />
+        {selected === 3 && <Medium />}
+        {selected === 4 && <Calculator />}
         {selected === 5 && <About />}
       </div>
     </div>

@@ -4,7 +4,7 @@ import { UilSun, UilMoon } from '@iconscout/react-unicons';
 const Title = ({ isNightMode, setNightMode, title }) => {
   return (
     <div className='flex justify-between items-center'>
-      <h1 className='text-3xl font-semibold pb-4 dark:text-white'>{title}</h1>
+      <h1 className='text-3xl font-semibold pb-10 dark:text-white'>{title}</h1>
       <div>
         <button onClick={() => setNightMode(!isNightMode)} className='py-1 px-2 rounded-full w-20 h-min flex justify-start bg-[#F5F5EA] shadow-md transition dark:justify-end'>
           <input type="checkbox" name="light-switch" className="light-switch sr-only" />
