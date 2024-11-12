@@ -28,13 +28,14 @@ function App() {
         setNightMode={setNightMode} 
       />
       
-      <div className='flex flex-col px-16 pt-6 pb-16 my-4 mr-4 rounded-3xl h-auto w-full overflow-y-scroll bg-white dark:bg-gray-900'>
+      <div className='flex flex-col px-16 py-6 my-4 mr-4 rounded-3xl h-auto w-full bg-slate-100 dark:bg-slate-900'>
         <Title 
           isNightMode={isNightMode} 
           setNightMode={setNightMode} 
-          title={fullSidebarData[selected]?.title}  // Safely access title
+          title={fullSidebarData[selected]?.title} 
+          para={fullSidebarData[selected]?.para}
         />
-        {selected === 0 && <Main />}
+        {selected === 0 && <Main selected={selected} setSelected={setSelected} />}
         {selected === 1 && <Micro />}
         {selected === 2 && <Small />}
         {selected === 3 && <Medium />}

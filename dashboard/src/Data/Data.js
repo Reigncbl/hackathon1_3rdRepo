@@ -10,22 +10,27 @@ export const SidebarData = [
     {
         title: 'Dashboard',
         icon: <UilEstate />,
+        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
     },
     {
         title: 'Micro',
         icon: <UilClipboardAlt />,
+        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
     },
     {
         title: 'Small',
         icon: <UilChart />,
+        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
     },
     {
         title: 'Medium',
         icon: <UilPackage />,
+        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
     },
     {
       title: 'Loan Calculator',
       icon: <UilPackage />,
+      para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
   },
 
 ];
@@ -39,22 +44,155 @@ export const SidebarFooter = [
     }
 ];
 
-export const cardsData = [
+export const cardsDataMicro = [
     {
-      title: "Sales",
+      title: "Savings Account",
       color: {
-        backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
+        backGround: "#39F8CE8",
+      },
+      barValue: 70,
+      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      value: "25,970",
+      png: UilChart,
+      percent: "25%",
+    },
+    {
+      title: "Personal Loan",
+      color: {
+        backGround: "#39F8CE8",
+      },
+      barValue: 70,
+      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      value: "25,970",
+      png: UilChart,
+      percent: "70%",
+
+    },
+    {
+      title: "Non-life Insurance",
+      color: {
+        backGround: "#39F8CE8",
+      },
+      barValue: 70,
+      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      value: "25,970",
+      png: UilChart,
+      percent: "70%",
+
+    },
+    {
+      title: "Investment",
+      color: {
+        backGround: "#39F8CE8",
         boxShadow: "0px 10px 20px 0px #e0c6f5",
       },
       barValue: 70,
       url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
       value: "25,970",
       png: UilChart,
-      series: [
-        {
-          name: "Sales",
-          data: [31, 40, 28, 51, 42, 109, 100],
-        },
-      ],
+      percent: "70%",
+
     },
+];
+
+export const cardsDataSmall = [
+  {
+    title: "Savings Account",
+    color: {
+      backGround: "#39F8CE8",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "25%",
+  },
+  {
+    title: "Personal Loan",
+    color: {
+      backGround: "#39F8CE8",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "70%",
+
+  },
+  {
+    title: "Non-life Insurance",
+    color: {
+      backGround: "#39F8CE8",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "70%",
+
+  },
+  {
+    title: "Investment",
+    color: {
+      backGround: "#39F8CE8",
+      boxShadow: "0px 10px 20px 0px #e0c6f5",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "70%",
+
+  },
+
+];
+export const cardsDataMedium = [
+  {
+    title: "Savings Account",
+    color: {
+      backGround: "#39F8CE8",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "25%",
+  },
+  {
+    title: "Personal Loan",
+    color: {
+      backGround: "#39F8CE8",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "70%",
+
+  },
+  {
+    title: "Non-life Insurance",
+    color: {
+      backGround: "#39F8CE8",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "70%",
+
+  },
+  {
+    title: "Investment",
+    color: {
+      backGround: "#39F8CE8",
+      boxShadow: "0px 10px 20px 0px #e0c6f5",
+    },
+    barValue: 70,
+    url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    value: "25,970",
+    png: UilChart,
+    percent: "70%",
+
+  },
 ];

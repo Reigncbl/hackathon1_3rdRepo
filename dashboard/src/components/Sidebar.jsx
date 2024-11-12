@@ -7,7 +7,7 @@ const Sidebar = ({ selected, setSelected, isSidebarActive, setSidebarActive}) =>
   };
 
   return (
-    <div className={`flex flex-col h-full ${isSidebarActive ? 'w-64' : 'w-20'} p-6 transition-width duration-300 bg-[#050517] dark:bg-gray-800`}>
+    <div className={`flex flex-col h-full ${isSidebarActive ? 'w-64' : 'w-20'} p-6 transition-width duration-300 bg-[#050517]`}>
       <div className='flex items-center justify-start cursor-pointer' onClick={toggleSidebar}>
       <img src="/Eizhel.png" alt="logo" className='w-10'/>
         {isSidebarActive && <span className='text-gray-300 dark:text-gray-200 font-bold text-2xl pl-4'>Logo</span>}

@@ -18,17 +18,24 @@ const Card = (props) => {
 
 // Compact Card
 function CompactCard({ param, setExpanded }) {
-  const Png = param.png;
+  
   return (
-    <motion.div
-      layoutId="expandableCard"
-      onClick={setExpanded}
-      className=""
-    >
-      <div>
-        <span>{param.title}</span>
-      </div>
-    </motion.div>
+      <motion.div
+        layoutId="expandableCard"
+        onClick={setExpanded}
+        className="h-32 w-72 rounded-3xl bg-[#F5F5EA] p-4 cursor-pointer shadow-sm"
+      >
+        <div className="flex flex-col justify-between h-full">
+          <div className="flex justify-between">
+            <span className="text-xl font-semibold">{param.value}</span>
+            <img src={param.Png} alt="png" className="w-10 h-10" />
+          </div>
+          <div>
+            <p className="font-semibold text-lg">{param.title}</p>
+            <p className="text-sm">{param.percent} <span>higher than last week</span></p>
+          </div>
+        </div>
+      </motion.div>
   );
 }
 
