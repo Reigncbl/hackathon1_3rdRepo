@@ -1,12 +1,13 @@
-import React from 'react'
 import Cards from '../Cards/DataCard';
+import React from 'react'
+import { cardsDataMedium } from '../Data/Data';
 
 const Medium = () => {
   return (
     <div className='flex flex-col dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-y-scroll overflow-hidden pr-4'>
       <div className='w-full h-fit pb-4'>
         <div className='w-full h-32'>
-          <Cards /> 
+        <Cards data={cardsDataMedium} /> 
         </div> 
       </div>
       <div className='flex gap-12'>

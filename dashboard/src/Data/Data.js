@@ -30,7 +30,7 @@ export const SidebarData = [
     {
       title: 'Loan Calculator',
       icon: <UilPackage />,
-      para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
+      para: 'Estimate your monthly installments now!',
   },
 
 ];
@@ -39,6 +39,7 @@ export const SidebarFooter = [
     {
       title: 'About',
       icon: <UilInfoCircle />,
+      para: 'Discover insights to drive your business forward!',
 
       
     }
@@ -48,7 +49,7 @@ export const cardsDataMicro = [
     {
       title: "Savings Account",
       color: {
-        backGround: "#39F8CE8",
+         backGround: "#39F8CE",
       },
       barValue: 70,
       url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",

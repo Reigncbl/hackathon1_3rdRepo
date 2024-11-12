@@ -1,12 +1,10 @@
 import React from "react";
-import { cardsDataMicro } from "../Data/Data";
-
 import Card from "./Card";
 
-const Cards = () => {
+const Cards = ({ data }) => {
   return (
     <div className="flex flex-row justify-evenly">
-      {cardsDataMicro.map((card, id) => {
+      {data.map((card, id) => {
         return (
           <div key={id}>
             <Card
@@ -16,7 +14,6 @@ const Cards = () => {
               value={card.value}
               png={card.png}
               percent={card.percent}
-
             />
           </div>
         );
