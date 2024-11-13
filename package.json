@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "papaparse": "^5.4.1",
     "tableau-react": "^2.2.0"
   }
 }

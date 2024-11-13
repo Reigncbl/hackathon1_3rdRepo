@@ -7,7 +7,7 @@ const Title = ({ isNightMode, setNightMode, title, para}) => {
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl font-semibold pb-4 dark:text-white'>{title}</h1>
         <div>
-          <button onClick={() => setNightMode(!isNightMode)} className='py-1 px-2 rounded-full w-20 h-min flex justify-start bg-[#F5F5EA] dark:bg-slate-500 shadow-sm transition dark:justify-end'>
+          <button onClick={() => setNightMode(!isNightMode)} className='py-1 px-2 rounded-full w-20 h-min flex justify-start bg-[#F5F5EA] dark:bg-slate-500 shadow-sm transition dark:justify-end border dark:border-0'>
             <input type="checkbox" name="light-switch" className="light-switch sr-only" />
             <label className="relative cursor-pointer" htmlFor="light-switch">
               {isNightMode ? (

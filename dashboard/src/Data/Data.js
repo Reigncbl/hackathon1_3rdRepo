@@ -4,36 +4,40 @@ import {
     UilChart,
     UilPackage,
     UilInfoCircle,
+    UilCalculatorAlt,
+    UilUser,
+    UilStore,
+    UilBuilding
 } from '@iconscout/react-unicons';
 
 export const SidebarData = [
-    {
-        title: 'Dashboard',
-        icon: <UilEstate />,
-        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
-    },
-    {
-        title: 'Micro',
-        icon: <UilClipboardAlt />,
-        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
-    },
-    {
-        title: 'Small',
-        icon: <UilChart />,
-        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
-    },
-    {
-        title: 'Medium',
-        icon: <UilPackage />,
-        para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta necessitatib',
-    },
-    {
-      title: 'Loan Calculator',
-      icon: <UilPackage />,
-      para: 'Estimate your monthly installments now!',
+  {
+      title: 'Dashboard',
+      icon: <UilEstate />,
+      para: 'View your business performance at a glance with real-time insights.',
   },
-
+  {
+      title: 'Micro ',
+      icon: <UilUser />,
+      para: 'Track essential metrics for micro-businesses to support growth.',
+  },
+  {
+      title: 'Small',
+      icon: <UilStore />,
+      para: 'Analyze data and trends tailored for small business needs.',
+  },
+  {
+      title: 'Medium',
+      icon: <UilBuilding />,
+      para: 'Access insights for medium-sized enterprises to drive success.',
+  },
+  {
+      title: 'Loan Calculator',
+      icon: <UilCalculatorAlt />,
+      para: 'Estimate your monthly loan installments easily and accurately.',
+  },
 ];
+
 
 export const SidebarFooter = [
     {

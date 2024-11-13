@@ -1,27 +1,37 @@
 import React, { useState } from 'react';
 
 const Calculator = () => {
-  const [loanAmount, setLoanAmount] = useState("Loan Amount"); 
+  const [loanAmount, setLoanAmount] = useState("Loan Amount");
   const [tenure, setTenure] = useState(1);
   const [monthlyPayment, setMonthlyPayment] = useState(0);
-
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const [activeGraph, setActiveGraph] = useState(null); // null, 'graph1', 'graph2'
 
   const calculateMonthlyPayment = () => {
     const annualInterestRate = 0.12;
-    const totalPayments = tenure * 12; 
+    const totalPayments = tenure * 12;
     const monthlyInterestRate = annualInterestRate / 12;
-
 
     const payment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
 
     setMonthlyPayment(payment.toFixed(2));
   };
 
+  const toggleOverlay = (graphType) => {
+    setActiveGraph(graphType);
+    setIsOverlayVisible(true);
+  };
+
+  const closeOverlay = () => {
+    setIsOverlayVisible(false);
+    setActiveGraph(null); // Reset the active graph when overlay is closed
+  };
+
   return (
-    <div className='flex flex-col gap-4 h-full '>
-      <div className='flex gap-4'>
-        <div className="gap-8 w-[480px] px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm">
-          <div className='flex h-full justify-center gap-4 '>
+    <div className='flex flex-col gap-4 h-full overflow-y-scroll pr-4'>
+      <div className='grid grid-cols-3 gap-4'>
+        <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm">
+          <div className='flex justify-center gap-4 '>
             <div className='flex flex-col justify-between dark:text-white w-full'>
               <div className='flex flex-col gap-8 items-end'>
                 <label className='py-2 font-medium'>Loan Amount: </label>
@@ -35,7 +45,7 @@ const Calculator = () => {
                 value={loanAmount}
                 onChange={(e) => setLoanAmount(parseFloat(e.target.value))}
                 placeholder="Enter loan amount"
-                className="p-2 rounded-lg dark:bg-slate-700 dark:text-white"
+                className="p-2 rounded-lg dark:bg-slate-700 dark:text-white border"
               />
 
               <select
@@ -43,7 +53,7 @@ const Calculator = () => {
                 id="tenure"
                 value={tenure}
                 onChange={(e) => setTenure(parseInt(e.target.value))}
-                className="p-2 rounded-lg dark:bg-slate-700 dark:text-white"
+                className="p-2 rounded-lg dark:bg-slate-700 dark:text-white border"
               >
                 <option value="1">1 Year</option>
                 <option value="2">2 Years</option>
@@ -57,32 +67,107 @@ const Calculator = () => {
                 </button>
               </div>
 
-              <p className="text-white text-xl font-semibold">
+              <p className="text-blue-400 text-xl font-semibold">
                 ₱{monthlyPayment}
               </p>
             </div>
-          </div> 
+          </div>
         </div>
-        <div className='w-full bg-white rounded-3xl shadow-sm '>
-          
-        </div> 
-      </div>
-      <div className='grid grid-cols-3 gap-4 h-full'>
-        <div className='bg-white rounded-3xl border drop-shadow-sm p-4'>
-          <p>cc radial</p>
+        <div className=' bg-white rounded-3xl shadow-sm col-span-2'>
         </div>
-        <div className='bg-white rounded-3xl border drop-shadow-sm p-4'>
-          <p>cc radial</p>
-        </div>
-        <div className='bg-white rounded-3xl border drop-shadow-sm p-4'>
-          <p>cc radial</p>
-        </div>
-
       </div>
 
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 h-full'>
+        {/* BPI Personal Loan Card */}
+        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6'>
+          <div className="flex justify-between items-center mb-4">
+            <span className="px-3 py-1 text-sm font-semibold text-white bg-[#BDB2E9] rounded-full">
+              Individual
+            </span>
+            <button onClick={() => toggleOverlay('graph1')} className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
+              Check Graph
+            </button>
+          </div>
+          <h2 className="text-2xl font-semibold text-gray-800">BPI Personal Loan</h2>
+          <p className="text-gray-600 mt-3">
+            Unlock additional funds with BPI Personal Loans, suitable for home improvement, education, business, travel, and other personal needs.
+          </p>
+          <h3 className="mt-5 font-semibold text-gray-800">Key Benefits</h3>
+          <ul className="mt-3 space-y-2 text-gray-600">
+            <li>• Access a loan without collateral requirements.</li>
+            <li>• Borrow from Php 20,000 up to Php 3,000,000.</li>
+            <li>• Receive funds directly and securely in your BPI account.</li>
+            <li>• Make monthly payments with ease via auto-debit.</li>
+            <li>• Flexible repayment terms: choose between 1 to 5 years.</li>
+          </ul>
+          <div className="mt-6 flex justify-center h-full items-end">
+            <button className="px-4 py-2 text-red-600 hover:underline">Learn more</button>
+          </div>
+        </div>
+
+        {/* BPI SME Term Loan Card */}
+        <div className='bg-white rounded-3xl border drop-shadow-sm p-6'>
+          <div className="flex justify-between items-center mb-4">
+            <span className="px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded-full">
+              Business
+            </span>
+            <button onClick={() => toggleOverlay('graph2')} className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
+              Check Graph
+            </button>
+          </div>
+          <h2 className="text-2xl font-semibold text-gray-800">BPI SME Term Loan</h2>
+          <p className="text-gray-600 mt-3">
+            Fuel your business growth with BPI SME Term Loan, offering customizable financing options to support expansion and operational needs.
+          </p>
+          <h3 className="mt-5 font-semibold text-gray-800">Key Features</h3>
+          <ul className="mt-3 space-y-2 text-gray-600">
+            <li>• Minimum loan amount: Php 300,000.</li>
+            <li>• Flexible repayment terms up to 5 years.</li>
+            <li>• Optional collateral for added flexibility.</li>
+          </ul>
+          <h3 className="mt-5 font-semibold text-gray-800">Why Choose BPI SME Loan?</h3>
+          <ul className="mt-3 space-y-2 text-gray-600">
+            <li>• <strong>Fast</strong>: Quick application approval process.</li>
+            <li>• <strong>Convenient</strong>: Minimal documentation required.</li>
+            <li>• <strong>Easy</strong>: Available with or without collateral.</li>
+            <li>• <strong>Flexible</strong>: Pay in monthly installments over a longer term.</li>
+          </ul>
+          <div className="mt-6 flex justify-center">
+            <button className="px-4 py-2 text-red-600 hover:underline">Learn more</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {isOverlayVisible && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-1/2">
+            <h2 className="text-2xl font-semibold text-gray-800">
+              {activeGraph === 'graph1' ? 'Personal Loan' : 'Business Loan'}
+            </h2>
+            <p className="text-gray-600 mb-4">
+              {activeGraph === 'graph1'
+                ? 'Visual representation of the BPI Personal Loan repayment schedule and interest over time.'
+                : 'Visual representation of the BPI SME Term Loan repayment schedule and interest over time.'}
+            </p>
+            {/* You can replace the text with your actual graph component or visualization */}
+            <div className="mt-4">
+              <div style={{ width: '100%', height: '300px', backgroundColor: '#f4f4f4' }}>
+                {/* Placeholder for Graph */}
+                {activeGraph === 'graph1' && 
+                <div>Personal Loan Graph
+                </div>}
+                {activeGraph === 'graph2' && 
+                <div>SME Graph
+                </div>}
+              </div>
+            </div>
+            <button onClick={closeOverlay} className="mt-4 px-4 py-2 bg-blue-400 text-white rounded-full">Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-
 
 export default Calculator;

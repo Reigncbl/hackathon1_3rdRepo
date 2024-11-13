@@ -1,14 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Main = () => {
+const Main = ({ selected, setSelected }) => {
+
+  // Function to handle button clicks and change the selected state
+  const handleButtonClick = (index) => {
+    setSelected(index); // This will update the selected state in App component
+  };
 
   return (
     <div className='flex flex-col dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-y-scroll overflow-hidden pr-4'>
       <div className='w-full h-fit pb-2'>
         <div className='flex gap-3'>
-          {/* <button className='bg-red-400 px-3 rounded-full text-white' onClick={() => setSelected('micro')}>Micro</button>
-          <button className='bg-blue-400 px-3 rounded-full text-white' onClick={() => setSelected('small')}>Small</button>
-          <button className='bg-yellow-400 px-3 rounded-full text-white' onClick={() => setSelected('medium')}>Medium</button> */}
+          {/* Button to set "micro" */}
+          <button className='bg-red-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(1)}>Micro</button>
+          
+          {/* Button to set "small" */}
+          <button className='bg-blue-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(2)}>Small</button>
+          
+          {/* Button to set "medium" */}
+          <button className='bg-yellow-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(3)}>Medium</button>
         </div>
       </div>
       <div className='flex gap-4'>
