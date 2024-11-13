@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import TableauReport from 'tableau-react';
+import { UilMultiply } from '@iconscout/react-unicons';
+
 
 // parent Card
 const Card = (props) => {
@@ -31,7 +33,7 @@ function CompactCard({ param, setExpanded }) {
         </div>
         <div>
           <p className="font-semibold text-lg">{param.title}</p>
-          <p className="text-sm">{param.percent} <span>higher than last week</span></p>
+          <p className="text-sm">{param.percent}</p>
         </div>
       </div>
     </motion.div>
@@ -42,22 +44,24 @@ function CompactCard({ param, setExpanded }) {
 function ExpandedCard({ param, setExpanded }) {
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center z-10"
+      className="fixed inset-0 flex items-center justify-center z-10 bg-black bg-opacity-50"
       layoutId="expandableCard"
     >
-      <div className="w-3/5 h-3/5 flex flex-col items-center justify-between p-4 rounded-xl bg-white shadow-md">
-        <div onClick={setExpanded} className="flex justify-end cursor-pointer">
-          exit
-        </div>
+      <div className="w-3/5 h-3/5 flex items-center justify-between p-4 rounded-xl bg-white shadow-md">
         <TableauReport
           url={param.url}
           options={{
             hideTabs: false,
             hideToolbar: false,
-            height: 500,
-            width: 500,
+            height: 400,
+            width: 800,
+
           }}
+          className="w-full h-full"
         />
+        <div onClick={setExpanded} className="flex justify-end items-start cursor-pointer h-full">
+        <UilMultiply size="24" color="#000" />
+        </div>
       </div>
     </motion.div>
   );

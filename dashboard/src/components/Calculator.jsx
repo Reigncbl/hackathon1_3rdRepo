@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Papa from 'papaparse';
+import TableauReport from 'tableau-react';
 
 const Calculator = () => {
   const [loanAmount, setLoanAmount] = useState("Loan Amount");
@@ -7,8 +9,25 @@ const Calculator = () => {
   const [interestRate, setInterestRate] = useState(0.12); 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [loanType, setLoanType] = useState("diminishing"); // 'diminishing' or 'addon'
-  const [activeGraph, setActiveGraph] = useState(null); // null, 'graph1', 'graph2'
+  const [activeGraph, setActiveGraph] = useState(null);
+  const [csvData, setCsvData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 8;
 
+  useEffect(() => {
+    Papa.parse('/Loanfiltered_customers.csv', {
+      download: true,
+      header: true,
+      complete: (result) => {
+        const filteredData = result.data.map((row) => {
+          const { CUSTOMER_ID, LOAN_ACCOUNT_ID, LOAN_START_DATE,	MATURITY_DATE, LOAN_STATUS,	 ...filteredRow } = row; 
+          return filteredRow; 
+        });
+
+        setCsvData(filteredData); 
+      },
+    });
+  }, []);
 
     // Diminishing Balance Method Formula
     const calculateDiminishingBalance = () => {
@@ -51,15 +70,21 @@ const Calculator = () => {
     setActiveGraph(null); // Reset the active graph when overlay is closed
   };
 
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = csvData.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="flex flex-col gap-4 h-full overflow-y-scroll pr-4">
-      <div className="grid grid-cols-3 gap-4">
-        <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm">
-          <div>
-            <button onClick={() => setLoanType("diminishing")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full ${loanType === "diminishing" ? "bg-[#D3F26A]" : ""}`}>
-              MSME Loan
+      <div className="grid grid-cols-6 gap-4">
+        <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm col-span-2">
+          <div className='pb-4 flex gap-2'>
+            <button onClick={() => setLoanType("diminishing")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border border-[#D3F26A] ${loanType === "diminishing" ? "bg-[#D3F26A]" : ""}`}>
+              SME Loan
             </button>
-            <button onClick={() => setLoanType("addon")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full ${loanType === "addon" ? "bg-[#D3F26A]" : ""}`}>
+            <button onClick={() => setLoanType("addon")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border border-[#D3F26A] ${loanType === "addon" ? "bg-[#D3F26A]" : ""}`}>
              Personal Loan
             </button>
           </div>
@@ -103,7 +128,7 @@ const Calculator = () => {
                 className="p-2 rounded-lg dark:bg-slate-700 dark:text-white border"
               />
               <div className="flex justify-end">
-                <button onClick={calculateMonthlyPayment} className="font-medium bg-[#9F8CE8] rounded-lg text-white px-4 py-2">
+                <button onClick={calculateMonthlyPayment} className="font-medium bg-[#9F8CE8] rounded-full text-white px-4 py-2">
                   Calculate
                 </button>
                 
@@ -114,18 +139,70 @@ const Calculator = () => {
             </div>
           </div>
         </div>
-        <div className=' bg-white rounded-3xl shadow-sm col-span-2'>
+        {/* <div className='bg-white rounded-3xl shadow-sm border col-span-2'>
+
+        </div> */}
+        <div className='bg-white rounded-3xl shadow-sm col-span-4 p-4 flex flex-col justify-center items-start'>
+          <TableauReport
+            url={"https://public.tableau.com/shared/GPY2PF9GW?:display_count=n&:origin=viz_share_link"}
+            options={{
+              hideTabs: false,
+              hideToolbar: false,
+              height: 400,
+              width: 700,
+            }}
+            />
         </div>
       </div>
-
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 h-full'>
+      
+      
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-4 h-fit mb-2'>
+        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6 col-span-1 overflow-x-scroll overflow-hidden'>
+          <h2 className="text-2xl font-semibold text-gray-800 text-center ">MSME Loan Data</h2>
+        <table className=" text-gray-800 text-sm ">
+            <thead>
+              <tr>
+                {csvData.length > 0 &&
+                  Object.keys(csvData[0]).map((key) => (
+                    <th key={key} className="p-2 border-b">{key}</th>
+                  ))}
+              </tr>
+            </thead>
+            <tbody>
+              {currentRows.map((row, index) => (
+                <tr key={index}>
+                  {Object.values(row).map((value, idx) => (
+                    <td key={idx} className="p-2 border-b">{value}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {/* Pagination Controls */}
+          <div className="mt-4 flex justify-center gap-2">
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-[#9F8CE8] text-white rounded"
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={indexOfLastRow >= csvData.length}
+              className="px-4 py-2 bg-[#9F8CE8] text-white rounded"
+            >
+              Next
+            </button>
+          </div>
+        </div>
         {/* BPI Personal Loan Card */}
-        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6'>
+        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6 col-span-1'>
           <div className="flex justify-between items-center mb-4">
-            <span className="px-3 py-1 text-sm font-semibold text-white bg-[#BDB2E9] rounded-full">
+            <span className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
               Individual
             </span>
-            <button onClick={() => toggleOverlay('graph1')} className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
+            <button onClick={() => toggleOverlay('graph1')} className="px-3 py-1 text-sm font-semibold text-white bg-[#9F8CE8] rounded-full">
               Check Graph
             </button>
           </div>
@@ -152,7 +229,7 @@ const Calculator = () => {
             <span className="px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded-full">
               Business
             </span>
-            <button onClick={() => toggleOverlay('graph2')} className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
+            <button onClick={() => toggleOverlay('graph2')} className="px-3 py-1 text-sm font-semibold text-white bg-[#9F8CE8] rounded-full">
               Check Graph
             </button>
           </div>

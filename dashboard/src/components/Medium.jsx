@@ -1,6 +1,7 @@
 import Cards from '../Cards/DataCard';
 import React from 'react'
 import { cardsDataMedium } from '../Data/Data';
+import TableauReport from 'tableau-react';
 
 const Medium = () => {
   return (
@@ -16,7 +17,15 @@ const Medium = () => {
             products all
           </div>
           <div className='bg-white drop-shadow-sm rounded-3xl w-1/2 p-4'>
-            cc radial
+            <TableauReport
+          url={"https://public.tableau.com/views/CreditCard_17314886936660/Sheet1?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+          options={{
+            hideTabs: false,
+            hideToolbar: false,
+            height: 350,
+            width: 500,
+          }}
+        />
           </div>
         </div>
       </div>

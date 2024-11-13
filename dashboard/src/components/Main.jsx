@@ -22,35 +22,66 @@ const Main = ({ selected, setSelected }) => {
           <button className='bg-yellow-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(3)}>Medium</button>
         </div>
       </div>
-      <div className='flex gap-4'>
-        <div className='w-3/5 h-80 rounded-3xl shadow-sm bg-[#F5F5EA] p-4'>
-          Product All
+      <div className='grid grid-cols-5 gap-4'>
+        <div className='col-span-3 h-full rounded-3xl shadow-sm bg-white overflow-hidden p-4'>
           <TableauReport
-          url={"https://public.tableau.com/views/MEDIUM/Sheet2?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+          url={"https://public.tableau.com/shared/DMGNYJ67F?:display_count=n&:origin=viz_share_link"}
           options={{
             hideTabs: false,
             hideToolbar: false,
             height: 500,
-            width: 100,
+            width: 1000,
           }}
         />
         </div>
-        <div className='flex flex-col gap-2 w-2/5'>
+        <div className='col-span-2'>
           <div className='rounded-3xl shadow-sm bg-white h-full p-4'>
-            CSV Table
+            <TableauReport
+            url={"https://public.tableau.com/shared/WR6R88CJX?:display_count=n&:origin=viz_share_link"}
+            options={{
+              hideTabs: false,
+              hideToolbar: false,
+              height: 500,
+              width: 400,
+            }}
+            />
           </div>
         </div>
       </div>
-      <div className='flex h-fit gap-4 my-4'>
-        <div className='w-1/3 h-64 shadow-sm bg-white rounded-3xl p-4'>
-          cc radial
+      <div className='grid grid-cols-3 h-fit gap-4 my-4'>
+        <div className='h-fit shadow-sm bg-white rounded-3xl p-4 overflow-x-scroll'>
+        <TableauReport
+          url={"https://public.tableau.com/shared/8FPMCJXCY?:display_count=n&:origin=viz_share_link"}
+          options={{
+            hideTabs: false,
+            hideToolbar: false,
+            height: 500,
+            width: 550,
+          }}
+        />
         </div> 
-        <div className='w-1/3 h-full p-4 shadow-sm bg-white rounded-3xl'>
-          cc radial
+        <div className='h-fit shadow-sm bg-white rounded-3xl p-4 overflow-x-scroll'>
+        <TableauReport
+          url={"https://public.tableau.com/shared/8KRDJZWR2?:display_count=n&:origin=viz_share_link"}
+          options={{
+            hideTabs: false,
+            hideToolbar: false,
+            height: 500,
+            width: 550,
+          }}
+        />
         </div> 
-        <div className='w-1/3 h-full p-4 shadow-sm bg-white rounded-3xl'>
-          cc radial
-        </div>
+        <div className='h-fit shadow-sm bg-white rounded-3xl p-4 overflow-x-scroll'>
+        <TableauReport
+          url={"https://public.tableau.com/shared/RTH9WSBN6?:display_count=n&:origin=viz_share_link"}
+          options={{
+            hideTabs: false,
+            hideToolbar: false,
+            height: 500,
+            width: 550,
+          }}
+        />
+        </div> 
       </div>
     </div>  
   );

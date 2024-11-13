@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import Cards from '../Cards/DataCard';
 import { cardsDataMicro } from '../Data/Data';
+import TableauReport from 'tableau-react';
 
 const Micro = () => {
   const [csvData, setCsvData] = useState([]);
@@ -37,7 +38,15 @@ const Micro = () => {
             products all
           </div>
           <div className='bg-white drop-shadow-sm rounded-3xl w-1/2 p-4'>
-            cc radial
+            <TableauReport
+              url={"https://public.tableau.com/views/CreditCard_17314886936660/Sheet2?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+              options={{
+                hideTabs: false,
+                hideToolbar: false,
+                height: 350,
+                width: 500,
+              }}
+            />
           </div>
         </div>
       </div>
@@ -45,7 +54,7 @@ const Micro = () => {
         <div className='bg-white drop-shadow-sm rounded-3xl p-4'>
           Loan
         </div>
-        <div className='bg-white drop-shadow-sm rounded-3xl p-4'>
+        <div className='bg-white drop-shadow-sm rounded-3xl p-4 overflow-x-auto'>
           {/* Display the CSV Data as a Table */}
           <table className="min-w-full bg-white text-gray-800 text-sm">
             <thead>
