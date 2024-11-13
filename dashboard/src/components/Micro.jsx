@@ -7,23 +7,30 @@ import TableauReport from 'tableau-react';
 const Micro = () => {
   const [csvData, setCsvData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 10; // Limit number of rows per page
+  const rowsPerPage = 5; // Limit number of rows per page
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = csvData.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     Papa.parse('/Micro.csv', {
       download: true,
       header: true,
       complete: (result) => {
-        setCsvData(result.data); // Store parsed data as JSON
+        const filteredData = result.data.map((row) => {
+          const { CUSTOMER_ID, CUSTOMER_LOCATION,	HOME_OWNER_INDICATOR,	CAR_OWNER_INDICATOR,	ENVIRONMENTAL_AFF_INDICATOR,	HUMANITARIAN_AFF_INDICATOR,	OF_INDICATOR,	RETIREES_INDICATOR,	FILCHI_INDICATOR,	 ...filteredRow } = row; 
+          return filteredRow; 
+        });
+
+        setCsvData(filteredData); 
       },
     });
   }, []);
 
-  const indexOfLastRow = currentPage * rowsPerPage;
-  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = csvData.slice(indexOfFirstRow, indexOfLastRow);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   return (
     <div className='flex flex-col dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-y-scroll overflow-hidden pr-4'>
@@ -33,11 +40,19 @@ const Micro = () => {
         </div> 
       </div>
       <div className='flex gap-12'>
-        <div className='flex h-96 w-full gap-4'>
-          <div className='bg-white drop-shadow-sm rounded-3xl w-full p-4'>
-            products all
+        <div className='grid grid-cols-5 h-96 w-full gap-4'>
+          <div className='bg-white drop-shadow-sm rounded-3xl w-full p-4 overflow-hidden col-span-3'>
+            <TableauReport
+              url={"https://public.tableau.com/shared/XMD4YY25C?:display_count=n&:origin=viz_share_link"}
+              options={{
+                hideTabs: false,
+                hideToolbar: false,
+                height: 350,
+                width: 700,
+              }}
+            />
           </div>
-          <div className='bg-white drop-shadow-sm rounded-3xl w-1/2 p-4'>
+          <div className='bg-white drop-shadow-sm rounded-3xl p-4 overflow-hidden col-span-2'>
             <TableauReport
               url={"https://public.tableau.com/views/CreditCard_17314886936660/Sheet2?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
               options={{
@@ -51,8 +66,16 @@ const Micro = () => {
         </div>
       </div>
       <div className='grid grid-cols-2 h-fit gap-4 my-4'>
-        <div className='bg-white drop-shadow-sm rounded-3xl p-4'>
-          Loan
+        <div className='bg-white drop-shadow-sm rounded-3xl p-4 overflow-hidden '>
+        <TableauReport
+              url={"https://public.tableau.com/views/FOR4_17314901677690/Sheet3?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+              options={{
+                hideTabs: false,
+                hideToolbar: false,
+                height: 350,
+                width: 800,
+              }}
+            />
         </div>
         <div className='bg-white drop-shadow-sm rounded-3xl p-4 overflow-x-auto'>
           {/* Display the CSV Data as a Table */}
