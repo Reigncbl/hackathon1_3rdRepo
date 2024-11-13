@@ -4,18 +4,42 @@ const Calculator = () => {
   const [loanAmount, setLoanAmount] = useState("Loan Amount");
   const [tenure, setTenure] = useState(1);
   const [monthlyPayment, setMonthlyPayment] = useState(0);
+  const [interestRate, setInterestRate] = useState(0.12); 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const [loanType, setLoanType] = useState("diminishing"); // 'diminishing' or 'addon'
   const [activeGraph, setActiveGraph] = useState(null); // null, 'graph1', 'graph2'
 
-  const calculateMonthlyPayment = () => {
-    const annualInterestRate = 0.12;
-    const totalPayments = tenure * 12;
-    const monthlyInterestRate = annualInterestRate / 12;
 
-    const payment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+    // Diminishing Balance Method Formula
+    const calculateDiminishingBalance = () => {
+      const totalPayments = tenure * 12;
+      const monthlyInterestRate = interestRate / 12;
+  
+      const payment =
+        (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
+        (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+  
+      setMonthlyPayment(payment.toFixed(2));
+    };
+
+    // Add-On Rate Method Formula
+  const calculateAddOnRate = () => {
+    const totalInterest = loanAmount * interestRate * tenure * 1.35;
+    const totalAmount = loanAmount + totalInterest;
+    const payment = totalAmount / (tenure * 12);
 
     setMonthlyPayment(payment.toFixed(2));
   };
+
+  const calculateMonthlyPayment = () => {
+    if (loanType === 'diminishing') {
+      calculateDiminishingBalance();
+    } else if (loanType === 'addon') {
+      calculateAddOnRate();
+    }
+  };
+
+
 
   const toggleOverlay = (graphType) => {
     setActiveGraph(graphType);
@@ -28,18 +52,27 @@ const Calculator = () => {
   };
 
   return (
-    <div className='flex flex-col gap-4 h-full overflow-y-scroll pr-4'>
-      <div className='grid grid-cols-3 gap-4'>
+    <div className="flex flex-col gap-4 h-full overflow-y-scroll pr-4">
+      <div className="grid grid-cols-3 gap-4">
         <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm">
-          <div className='flex justify-center gap-4 '>
-            <div className='flex flex-col justify-between dark:text-white w-full'>
-              <div className='flex flex-col gap-8 items-end'>
-                <label className='py-2 font-medium'>Loan Amount: </label>
-                <label className='py-2 font-medium'>Loan Tenure:</label>
+          <div>
+            <button onClick={() => setLoanType("diminishing")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full ${loanType === "diminishing" ? "bg-[#D3F26A]" : ""}`}>
+              MSME Loan
+            </button>
+            <button onClick={() => setLoanType("addon")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full ${loanType === "addon" ? "bg-[#D3F26A]" : ""}`}>
+             Personal Loan
+            </button>
+          </div>
+          <div className="flex justify-center gap-4">
+            <div className="flex flex-col justify-between dark:text-white w-full">
+              <div className="flex flex-col gap-8 items-end">
+                <label className="py-2 font-medium">Loan Amount:</label>
+                <label className="py-2 font-medium">Loan Tenure:</label>
+                <label className="py-2 font-medium">Interest Rate:</label>
               </div>
-              <span className='text-[#050517] text-base font-medium dark:text-white text-right'>Monthly Payment:</span>
+              <span className="text-[#050517] text-base font-medium dark:text-white text-right">Monthly Payment:</span>
             </div>
-            <div className='flex flex-col gap-8 justify-end w-4/5'>
+            <div className="flex flex-col gap-8 justify-end w-4/5">
               <input
                 type="number"
                 value={loanAmount}
@@ -48,7 +81,7 @@ const Calculator = () => {
                 className="p-2 rounded-lg dark:bg-slate-700 dark:text-white border"
               />
 
-              <select
+            <select
                 name="tenure"
                 id="tenure"
                 value={tenure}
@@ -61,12 +94,20 @@ const Calculator = () => {
                 <option value="4">4 Years</option>
                 <option value="5">5 Years</option>
               </select>
+              <input
+                type="number"
+                step="0.01"
+                value={interestRate * 100}
+                onChange={(e) => setInterestRate(parseFloat(e.target.value) / 100)}
+                placeholder="Enter interest rate (%)"
+                className="p-2 rounded-lg dark:bg-slate-700 dark:text-white border"
+              />
               <div className="flex justify-end">
                 <button onClick={calculateMonthlyPayment} className="font-medium bg-[#9F8CE8] rounded-lg text-white px-4 py-2">
                   Calculate
                 </button>
+                
               </div>
-
               <p className="text-blue-400 text-xl font-semibold">
                 ₱{monthlyPayment}
               </p>

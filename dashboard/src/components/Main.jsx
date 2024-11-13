@@ -1,4 +1,5 @@
 import React from 'react';
+import TableauReport from 'tableau-react';
 
 const Main = ({ selected, setSelected }) => {
 
@@ -24,6 +25,15 @@ const Main = ({ selected, setSelected }) => {
       <div className='flex gap-4'>
         <div className='w-3/5 h-80 rounded-3xl shadow-sm bg-[#F5F5EA] p-4'>
           Product All
+          <TableauReport
+          url={"https://public.tableau.com/views/MEDIUM/Sheet2?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+          options={{
+            hideTabs: false,
+            hideToolbar: false,
+            height: 500,
+            width: 100,
+          }}
+        />
         </div>
         <div className='flex flex-col gap-2 w-2/5'>
           <div className='rounded-3xl shadow-sm bg-white h-full p-4'>

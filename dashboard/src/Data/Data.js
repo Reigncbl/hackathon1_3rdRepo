@@ -56,7 +56,7 @@ export const cardsDataMicro = [
          backGround: "#39F8CE",
       },
       barValue: 70,
-      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      url:"https://public.tableau.com/views/MEDIUM/Sheet1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
       value: "10,107", /*1778 + 1800 + 1824 + 1558 + 1573 + 1574*/ /*Monthly report*/
       png: UilChart,   /*PercentIncrease = [(newvalue - originalvalue)/originalvalue] x 100*/
       percent: "0%",  //                      [(1574-1573) / 1573] x 100 = 0.063
@@ -67,7 +67,7 @@ export const cardsDataMicro = [
         backGround: "#39F8CE8",
       },
       barValue: 70,
-      url:"https://public.tableau.com/views/PlayingwithTableausNewSpatialParameter/Map?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      url:"https://public.tableau.com/views/MEDIUM/Sheet2?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
       value: "2,660", /*444 + 446 + 443 + 442 + 440 + 445*/
       png: UilChart,
       percent: "1%", // [(445-440) / 440] x 100 = 1.13%
