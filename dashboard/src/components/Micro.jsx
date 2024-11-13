@@ -103,14 +103,14 @@ const Micro = () => {
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-blue-500 text-white rounded"
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white rounded"
             >
               Previous
             </button>
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={indexOfLastRow >= csvData.length}
-              className="px-4 py-2 bg-blue-500 text-white rounded"
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white rounded"
             >
               Next
             </button>

@@ -128,7 +128,7 @@ const Calculator = () => {
                 className="p-2 rounded-lg dark:bg-slate-700 dark:text-white border"
               />
               <div className="flex justify-end">
-                <button onClick={calculateMonthlyPayment} className="font-medium bg-[#9F8CE8] rounded-full text-white px-4 py-2">
+                <button onClick={calculateMonthlyPayment} className="font-medium bg-[#9F8CE8] rounded-full text-white px-4 py-2 hover:bg-[#8c7bcd] active:bg-[#786ab1]">
                   Calculate
                 </button>
                 
@@ -183,14 +183,14 @@ const Calculator = () => {
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-[#9F8CE8] text-white rounded"
+              className="px-4 py-2 bg-[#9F8CE8] text-white rounded hover:bg-[#8c7bcd] active:bg-[#786ab1]"
             >
               Previous
             </button>
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={indexOfLastRow >= csvData.length}
-              className="px-4 py-2 bg-[#9F8CE8] text-white rounded"
+              className="px-4 py-2 bg-[#9F8CE8] text-white rounded hover:bg-[#8c7bcd] active:bg-[#786ab1]"
             >
               Next
             </button>
@@ -202,7 +202,7 @@ const Calculator = () => {
             <span className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
               Individual
             </span>
-            <button onClick={() => toggleOverlay('graph1')} className="px-3 py-1 text-sm font-semibold text-white bg-[#9F8CE8] rounded-full">
+            <button onClick={() => toggleOverlay('graph1')} className="px-3 py-1 text-sm font-semibold text-white bg-[#9F8CE8] rounded-full hover:bg-[#8c7bcd] active:bg-[#786ab1] ">
               Check Graph
             </button>
           </div>
@@ -229,7 +229,7 @@ const Calculator = () => {
             <span className="px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded-full">
               Business
             </span>
-            <button onClick={() => toggleOverlay('graph2')} className="px-3 py-1 text-sm font-semibold text-white bg-[#9F8CE8] rounded-full">
+            <button onClick={() => toggleOverlay('graph2')} className="px-3 py-1 text-sm font-semibold text-white bg-[#9F8CE8] rounded-full hover:bg-[#8c7bcd] active:bg-[#786ab1]">
               Check Graph
             </button>
           </div>
@@ -280,7 +280,7 @@ const Calculator = () => {
                 </div>}
               </div>
             </div>
-            <button onClick={closeOverlay} className="mt-4 px-4 py-2 bg-blue-400 text-white rounded-full">Close</button>
+            <button onClick={closeOverlay} className="mt-4 px-4 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 active:bg-blue-600">Close</button>
           </div>
         </div>
       )}

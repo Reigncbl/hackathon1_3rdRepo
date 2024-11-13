@@ -13,13 +13,13 @@ const Main = ({ selected, setSelected }) => {
       <div className='w-full h-fit pb-2'>
         <div className='flex gap-3'>
           {/* Button to set "micro" */}
-          <button className='bg-red-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(1)}>Micro</button>
+          <button className='bg-red-400 hover:bg-red-500 active:bg-red-600 px-3 rounded-full text-white' onClick={() => handleButtonClick(1)}>Micro</button>
           
           {/* Button to set "small" */}
-          <button className='bg-blue-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(2)}>Small</button>
+          <button className='bg-blue-400 hover:bg-blue-500 active:bg-blue-600 px-3 rounded-full text-white' onClick={() => handleButtonClick(2)}>Small</button>
           
           {/* Button to set "medium" */}
-          <button className='bg-yellow-400 px-3 rounded-full text-white' onClick={() => handleButtonClick(3)}>Medium</button>
+          <button className='bg-green-400 hover:bg-green-500 active:bg-green-600 px-3 rounded-full text-white' onClick={() => handleButtonClick(3)}>Medium</button>
         </div>
       </div>
       <div className='grid grid-cols-5 gap-4'>
