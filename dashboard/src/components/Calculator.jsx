@@ -79,7 +79,7 @@ const Calculator = () => {
   return (
     <div className="flex flex-col gap-4 h-full overflow-y-scroll pr-4">
       <div className="grid grid-cols-6 gap-4">
-        <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm col-span-2">
+        <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm col-span-2 dark:border-0">
           <div className='pb-4 flex gap-2'>
             <button onClick={() => setLoanType("diminishing")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border border-[#D3F26A] ${loanType === "diminishing" ? "bg-[#D3F26A]" : "dark:bg-slate-600 dark:text-white dark:border-0"}`}>
               SME Loan
@@ -157,9 +157,9 @@ const Calculator = () => {
       
       
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 h-fit mb-2'>
-        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6 col-span-1 overflow-x-scroll overflow-hidden'>
-          <h2 className="text-2xl font-semibold text-gray-800 text-center ">MSME Loan Data</h2>
-        <table className=" text-gray-800 text-sm ">
+        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6 col-span-1 overflow-x-scroll overflow-hidden dark:bg-slate-700 dark:border-0'>
+          <h2 className="text-2xl font-semibold text-gray-800 text-center dark:text-white">MSME Loan Data</h2>
+        <table className=" text-gray-800 text-sm dark:text-white">
             <thead>
               <tr>
                 {csvData.length > 0 &&
@@ -197,7 +197,7 @@ const Calculator = () => {
           </div>
         </div>
         {/* BPI Personal Loan Card */}
-        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6 col-span-1'>
+        <div className='flex flex-col bg-white rounded-3xl border drop-shadow-sm p-6 col-span-1 dark:bg-slate-700 dark:border-0'>
           <div className="flex justify-between items-center mb-4">
             <span className="px-3 py-1 text-sm font-semibold text-black bg-[#D3F26A] rounded-full">
               Individual
@@ -206,12 +206,12 @@ const Calculator = () => {
               Check Graph
             </button>
           </div>
-          <h2 className="text-2xl font-semibold text-gray-800">BPI Personal Loan</h2>
-          <p className="text-gray-600 mt-3">
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">BPI Personal Loan</h2>
+          <p className="text-gray-600 mt-3 dark:text-white">
             Unlock additional funds with BPI Personal Loans, suitable for home improvement, education, business, travel, and other personal needs.
           </p>
-          <h3 className="mt-5 font-semibold text-gray-800">Key Benefits</h3>
-          <ul className="mt-3 space-y-2 text-gray-600">
+          <h3 className="mt-5 font-semibold text-gray-800 dark:text-white">Key Benefits</h3>
+          <ul className="mt-3 space-y-2 text-gray-600 dark:text-white">
             <li>• Access a loan without collateral requirements.</li>
             <li>• Borrow from Php 20,000 up to Php 3,000,000.</li>
             <li>• Receive funds directly and securely in your BPI account.</li>
@@ -219,12 +219,12 @@ const Calculator = () => {
             <li>• Flexible repayment terms: choose between 1 to 5 years.</li>
           </ul>
           <div className="mt-6 flex justify-center h-full items-end">
-            <button className="px-4 py-2 text-red-600 hover:underline">Learn more</button>
+            <button className="px-4 py-2 text-blue-400 hover:underline">Learn more</button>
           </div>
         </div>
 
         {/* BPI SME Term Loan Card */}
-        <div className='bg-white rounded-3xl border drop-shadow-sm p-6'>
+        <div className='bg-white rounded-3xl border drop-shadow-sm p-6 dark:bg-slate-700 dark:border-0'>
           <div className="flex justify-between items-center mb-4">
             <span className="px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded-full">
               Business
@@ -233,25 +233,25 @@ const Calculator = () => {
               Check Graph
             </button>
           </div>
-          <h2 className="text-2xl font-semibold text-gray-800">BPI SME Term Loan</h2>
-          <p className="text-gray-600 mt-3">
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">BPI SME Term Loan</h2>
+          <p className="text-gray-600 mt-3 dark:text-white">
             Fuel your business growth with BPI SME Term Loan, offering customizable financing options to support expansion and operational needs.
           </p>
-          <h3 className="mt-5 font-semibold text-gray-800">Key Features</h3>
-          <ul className="mt-3 space-y-2 text-gray-600">
+          <h3 className="mt-5 font-semibold text-gray-800 dark:text-white">Key Features</h3>
+          <ul className="mt-3 space-y-2 text-gray-600 dark:text-white ">
             <li>• Minimum loan amount: Php 300,000.</li>
             <li>• Flexible repayment terms up to 5 years.</li>
             <li>• Optional collateral for added flexibility.</li>
           </ul>
-          <h3 className="mt-5 font-semibold text-gray-800">Why Choose BPI SME Loan?</h3>
-          <ul className="mt-3 space-y-2 text-gray-600">
+          <h3 className="mt-5 font-semibold text-gray-800 dark:text-white">Why Choose BPI SME Loan?</h3>
+          <ul className="mt-3 space-y-2 text-gray-600 dark:text-white">
             <li>• <strong>Fast</strong>: Quick application approval process.</li>
             <li>• <strong>Convenient</strong>: Minimal documentation required.</li>
             <li>• <strong>Easy</strong>: Available with or without collateral.</li>
             <li>• <strong>Flexible</strong>: Pay in monthly installments over a longer term.</li>
           </ul>
           <div className="mt-6 flex justify-center">
-            <button className="px-4 py-2 text-red-600 hover:underline">Learn more</button>
+            <button className="px-4 py-2 text-blue-400 hover:underline">Learn more</button>
           </div>
         </div>
       </div>
