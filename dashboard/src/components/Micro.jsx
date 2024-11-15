@@ -1,13 +1,13 @@
-import Cards from '../Cards/DataCard';
 import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
-import { cardsDataMedium } from '../Data/Data';
+import Cards from '../Cards/DataCard';
+import { cardsDataMicro } from '../Data/Data';
 import TableauReport from 'tableau-react';
 
-const Medium = () => {
+const Micro = () => {
   const [csvData, setCsvData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 5; // Limit number of rows per page
+  const rowsPerPage = 8; // Limit number of rows per page
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = csvData.slice(indexOfFirstRow, indexOfLastRow);
@@ -28,19 +28,22 @@ const Medium = () => {
       },
     });
   }, []);
-  
+
+
+
+
   return (
     <div className='flex flex-col dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-y-scroll overflow-hidden pr-4'>
       <div className='w-full h-fit pb-4'>
         <div className='w-full h-32'>
-        <Cards data={cardsDataMedium} /> 
+          <Cards data={cardsDataMicro} /> 
         </div> 
       </div>
       <div className='flex gap-12'>
         <div className='grid grid-cols-5 h-96 w-full gap-4'>
           <div className='bg-white drop-shadow-sm rounded-3xl w-full p-4 overflow-hidden col-span-3'>
             <TableauReport
-              url={"https://public.tableau.com/views/MediumBPI/BPIPRODUCTSmedium?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+              url={"https://public.tableau.com/shared/XMD4YY25C?:display_count=n&:origin=viz_share_link"}
               options={{
                 hideTabs: false,
                 hideToolbar: false,
@@ -51,21 +54,21 @@ const Medium = () => {
           </div>
           <div className='bg-white drop-shadow-sm rounded-3xl p-4 overflow-hidden col-span-2'>
             <TableauReport
-          url={"https://public.tableau.com/views/CreditCard_17314886936660/Sheet1?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
-          options={{
-            hideTabs: false,
-            hideToolbar: false,
-            height: 350,
-            width: 500,
-          }}
-        />
+              url={"https://public.tableau.com/views/CreditCard_17314886936660/Sheet2?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+              options={{
+                hideTabs: false,
+                hideToolbar: false,
+                height: 350,
+                width: 500,
+              }}
+            />
           </div>
         </div>
       </div>
       <div className='grid grid-cols-2 h-fit gap-4 my-4'>
         <div className='bg-white drop-shadow-sm rounded-3xl p-4 overflow-hidden '>
         <TableauReport
-              url={"https://public.tableau.com/views/FOR4_17314901677690/Sheet2?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
+              url={"https://public.tableau.com/views/FOR4_17314901677690/Sheet3?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"}
               options={{
                 hideTabs: false,
                 hideToolbar: false,
@@ -113,11 +116,9 @@ const Medium = () => {
             </button>
           </div>
         </div>
-        
       </div>
-      
-    </div>  
+    </div>
   );
-}
+};
 
-export default Medium
+export default Micro;

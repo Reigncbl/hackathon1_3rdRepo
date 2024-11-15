@@ -81,10 +81,10 @@ const Calculator = () => {
       <div className="grid grid-cols-6 gap-4">
         <div className="px-8 py-4 rounded-3xl bg-white border dark:bg-slate-800 drop-shadow-sm col-span-2">
           <div className='pb-4 flex gap-2'>
-            <button onClick={() => setLoanType("diminishing")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border border-[#D3F26A] ${loanType === "diminishing" ? "bg-[#D3F26A]" : ""}`}>
+            <button onClick={() => setLoanType("diminishing")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border border-[#D3F26A] ${loanType === "diminishing" ? "bg-[#D3F26A]" : "dark:bg-slate-600 dark:text-white dark:border-0"}`}>
               SME Loan
             </button>
-            <button onClick={() => setLoanType("addon")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border border-[#D3F26A] ${loanType === "addon" ? "bg-[#D3F26A]" : ""}`}>
+            <button onClick={() => setLoanType("addon")} className={`px-3 py-1 text-sm font-semibold text-black rounded-full border  border-[#D3F26A] ${loanType === "addon" ? "bg-[#D3F26A]" : " dark:bg-slate-600 dark:text-white dark:border-0"}`}>
              Personal Loan
             </button>
           </div>
